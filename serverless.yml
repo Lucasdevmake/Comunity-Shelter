@@ -13,12 +13,20 @@ functions:
               path: hello
               method: get
 
-    shelter:
+    createShelter:
         handler: services/createShelter.createShelter
         events:
           - http:
               path: createShelter
               method: post
+        timeout: 30
+    
+    updateOcuppancy:
+        handler: services/updateOcuppancy.updateOcuppancy
+        events:
+          - http:
+              path: shelter/updateOcuppancy/{comunityShelterId}
+              method: put
         timeout: 30
 
 

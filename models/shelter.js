@@ -4,7 +4,12 @@ const ShelterSchema = new mongoose.Schema({
     _id: String,
     name: String,
     streetAdress: String,
-    capacity: Number
+    capacity: Number,
+    email: String,
+    ocuppancy: {
+        type: Number,
+        default: 0
+    }
 });
 
 const Shelter = mongoose.model("Shelter", ShelterSchema);

@@ -7,16 +7,17 @@ module.exports.createShelter = async(event) => {
     const shelter = {
         _id: uuid.v4(),
         name: body.name,
+        email: body.email,
         streetAdress: body.streetAdress,
         capacity: body.capacity
     };
 
-    await connect.connect();
+    await connect();
 
     await Shelter.create(shelter);
 
     return {
-        statusCode: 201,
+        statusCode: 201, //created
         body: JSON.stringify(shelter)
     }
 };
