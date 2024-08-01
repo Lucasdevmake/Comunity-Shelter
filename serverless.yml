@@ -1,0 +1,30 @@
+service: comunity-shelter
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+
+functions:
+
+    hello:
+        handler: services/hello.hello
+        events:
+          - http:
+              path: hello
+              method: get
+
+    shelter:
+        handler: services/createShelter.createShelter
+        events:
+          - http:
+              path: createShelter
+              method: post
+        timeout: 30
+
+
+plugins:
+  - serverless-offline
+
+custom:
+    serverless-offline:
+        port: 3000
