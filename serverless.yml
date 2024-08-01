@@ -29,6 +29,13 @@ functions:
               method: put
         timeout: 30
 
+    getShelter:
+        handler: services/getShelter.getShelter
+        events:
+          - http:
+              path: shelter
+              method: get
+        timeout: 30
 
 plugins:
   - serverless-offline
