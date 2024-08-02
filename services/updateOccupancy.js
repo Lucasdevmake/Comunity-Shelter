@@ -1,5 +1,7 @@
-const Shelter = require("../models/shelter");
-const connect = require("../database");
+const Shelter = require("../models/shelter.js");
+const connect = require("../database.js");
+const { notifyComunityShelter } = require("../producer.js");
+const { calculateOcuppancyRate } = require("../calculateOccupancy.js");
 
 module.exports.updateOccupancy = async(event) => {
     const{comunityShelterId} = event.pathParameters;
@@ -32,8 +34,14 @@ module.exports.updateOccupancy = async(event) => {
 
     shelter.occupancy += occupancy; //incremento de ocupação do shelter
 
-    if (shelter.calculateOccupancyRate() === 100) {
-        // retorno de mensagem kafka
+    if (calculateOcuppancyRate(shelter) === 100) {
+        console.log("Enviando notificação de abrigo cheio");
+        await notifyComunityShelter(
+        {
+            comunityShelterId: shelter._id,
+            name: shelter.name,
+            email: shelter.email
+        });
     }
 
     await Shelter.updateOne(
