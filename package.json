@@ -10,6 +10,7 @@
     "license": "ISC",
     "description": "",
     "dependencies": {
+        "kafkajs": "^2.2.4",
         "mongoose": "^8.5.2",
         "uuid": "^10.0.0"
     },

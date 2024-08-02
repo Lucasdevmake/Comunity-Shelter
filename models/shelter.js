@@ -6,11 +6,15 @@ const ShelterSchema = new mongoose.Schema({
     streetAdress: String,
     capacity: Number,
     email: String,
-    ocuppancy: {
+    occupancy: {
         type: Number,
         default: 0
     }
 });
+
+ShelterSchema.methods.calculateOcuppancyRate = function() {
+    return (this.occupancy / this.capacity) * 100;
+}
 
 const Shelter = mongoose.model("Shelter", ShelterSchema);
 

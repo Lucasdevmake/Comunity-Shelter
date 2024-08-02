@@ -20,12 +20,12 @@ functions:
               path: createShelter
               method: post
         timeout: 30
-    
-    updateOcuppancy:
-        handler: services/updateOcuppancy.updateOcuppancy
+
+    updateOccupancy:
+        handler: services/updateOccupancy.updateOccupancy
         events:
           - http:
-              path: shelter/updateOcuppancy/{comunityShelterId}
+              path: shelter/updateOccupancy/{comunityShelterId}
               method: put
         timeout: 30
 
