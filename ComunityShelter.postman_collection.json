@@ -1,0 +1,120 @@
+{
+	"info": {
+		"_postman_id": "8250f6db-a75e-40fe-9da9-d55f98ece3eb",
+		"name": "ComunityShelter",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18493669"
+	},
+	"item": [
+		{
+			"name": "createShelter",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Casa de Passagem\",\r\n    \"streetAdress\": \"Rua da Impoeira\",\r\n    \"capacity\": 50,\r\n    \"email\": \"lucasanc14@gmail.com\",\r\n    \"resource\": {\r\n        \"doctor\": 5,\r\n        \"volunteer\": 10,\r\n        \"supplyKit\": 20,\r\n        \"basicBasket\": 40,\r\n        \"transport\": 6\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Url}}/createShelter",
+					"host": [
+						"{{Url}}"
+					],
+					"path": [
+						"createShelter"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateOcuppancy",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"occupancy\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Url}}/shelter/updateOccupancy/1160e78a-e766-46b5-960f-64386925813e",
+					"host": [
+						"{{Url}}"
+					],
+					"path": [
+						"shelter",
+						"updateOccupancy",
+						"1160e78a-e766-46b5-960f-64386925813e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "exchangeResource",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"receiver\": {\r\n        \"communityShelterId\": \"75f9f726-c72e-49dc-b64d-a8b6a6c0ceaf\",\r\n        // resource que o receiver esta oferecendo para que possa receber algo em troca\r\n        \"resource\": {\r\n            \"doctor\": 2\r\n        }\r\n    },\r\n    \"giver\": {\r\n        \"communityShelterId\": \"c2dde89b-59f9-49b8-88c0-d43b7bf5df0c\",\r\n        // resources que o giver esta doando ao receiver\r\n        \"resource\": {\r\n            \"volunteer\": 2,\r\n            \"basicBasket\": 1\r\n        }\r\n    }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Url}}/shelter/exchangeResource",
+					"host": [
+						"{{Url}}"
+					],
+					"path": [
+						"shelter",
+						"exchangeResource"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getShelter",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Url}}/shelter",
+					"host": [
+						"{{Url}}"
+					],
+					"path": [
+						"shelter"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
