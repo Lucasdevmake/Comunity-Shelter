@@ -36,6 +36,14 @@ functions:
               path: shelter
               method: get
         timeout: 30
+    
+    exchangeResource:
+      handler: services/exchangeResource.exchangeResource
+      events:
+        - http:
+            path: shelter/exchangeResource
+            method: put
+      timeout: 30
 
 plugins:
   - serverless-offline

@@ -1,7 +1,7 @@
 const Shelter = require("../models/shelter.js");
 const connect = require("../database.js");
 const { notifyComunityShelter } = require("../producer.js");
-const { calculateOcuppancyRate } = require("../calculateOccupancy.js");
+const { calculateOccupancyRate } = require("../calculateOccupancy.js");
 
 module.exports.updateOccupancy = async(event) => {
     const{comunityShelterId} = event.pathParameters;
@@ -34,7 +34,7 @@ module.exports.updateOccupancy = async(event) => {
 
     shelter.occupancy += occupancy; //incremento de ocupação do shelter
 
-    if (calculateOcuppancyRate(shelter) === 100) {
+    if (calculateOccupancyRate(shelter) === 100) {
         console.log("Enviando notificação de abrigo cheio");
         await notifyComunityShelter(
         {

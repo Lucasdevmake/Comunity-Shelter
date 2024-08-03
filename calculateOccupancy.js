@@ -1,5 +1,5 @@
-function calculateOcuppancyRate(shelter) {
+function calculateOccupancyRate(shelter) {
     return (shelter.occupancy / shelter.capacity) * 100;
 };
 
-module.exports = {calculateOcuppancyRate};
+module.exports = {calculateOccupancyRate};

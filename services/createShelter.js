@@ -5,7 +5,7 @@ const yup = require("yup");
 
 module.exports.createShelter = async(event) => {
     const body = JSON.parse(event.body);
-    const valid = await validadeBody(body);
+    const valid = await validateBody(body);
 
     if (!valid) {
         return {
@@ -28,19 +28,18 @@ module.exports.createShelter = async(event) => {
     await Shelter.create(shelter);
 
     return {
-        statusCode: 201, //created
+        statusCode: 201,
         body: JSON.stringify(shelter)
     }
 };
 
-async function validadeBody(body) {
+async function validateBody(body) {
     try {
         const schema = yup.object().shape({
             name: yup.string().required(),
             streetAdress: yup.string().required(),
             capacity: yup.number().required().positive().integer(),
             email: yup.string().email().required(),
-            occupancy: yup.number().required().positive().integer(),
             resource: yup.object().shape({
                 doctor: yup.number().required().positive().integer(),
                 volunteer: yup.number().required().positive().integer(),
@@ -53,7 +52,7 @@ async function validadeBody(body) {
         await schema.validate(body);
         return true;
 
-    } catch(error){
+    } catch(error) {
         console.log(error);
         return false;
     }

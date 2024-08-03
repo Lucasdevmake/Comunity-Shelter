@@ -1,6 +1,6 @@
 const Shelter = require("../models/shelter");
 const connect = require("../database");
-const { calculateOcuppancyRate } = require("../calculateOccupancy.js");
+const { calculateOccupancyRate } = require("../calculateOccupancy.js");
 
 module.exports.getShelter = async() => {
     await connect();
@@ -8,7 +8,7 @@ module.exports.getShelter = async() => {
     const shelters = await Shelter.find();
 
     const sheltersOver = shelters.filter(shelter => {
-        const capacityPercent = calculateOcuppancyRate(shelter);
+        const capacityPercent = calculateOccupancyRate(shelter);
         return capacityPercent >= 90;
     });
 
