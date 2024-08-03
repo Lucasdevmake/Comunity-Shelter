@@ -12,7 +12,8 @@
     "dependencies": {
         "kafkajs": "^2.2.4",
         "mongoose": "^8.5.2",
-        "uuid": "^10.0.0"
+        "uuid": "^10.0.0",
+        "yup": "^1.4.0"
     },
     "devDependencies": {
         "serverless-offline": "^13.6.0"
